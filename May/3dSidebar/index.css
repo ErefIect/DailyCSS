@@ -1,0 +1,77 @@
+:root{
+    box-sizing: content-box;
+    padding: 0%;
+    margin: 0%;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #454750;
+   
+}
+.td-column{
+    position: relative;/*大多数的定位是relative用以表明主骨架
+    意义是以这骨架作为基底来添加其他要素的absolute*/
+    transform: skewY(-15deg);
+}
+.td-column-li:last-child::after{
+    box-shadow: -120px 120px 30px rgba(0,0,0,0.25);
+}
+.td-column-li{
+    position: relative;
+    list-style-type: none;
+    width: 200px;
+    background: #3e3f46;
+    padding: 15px;
+    z-index: var(--i);
+    transition: 0.5s;/* 意义是让hover产生回弹之后的动画效果，在初始状态中添加transition的目的是
+    让动画效果结束之后过渡回原来的状态更自然些 */
+}
+.td-column-li:hover{
+    background: #33a3ee;
+    transform: translateX(-50px);
+    transition: 0.5s;
+}
+.td-column-li:hover::before{
+    background: #1f5378;
+}
+.td-column-li:hover::after{
+    background: #2982b9;
+}
+.td-column-li::before{
+    content: '';
+    position: absolute;
+    transform-origin: right;
+    transform: skewY(45deg);
+    top: 0;
+    left: -40px;
+    width: 40px;
+    height: 100%;
+    background: #3e3133;
+}
+.td-column-li::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    background: #35383e;
+    left: 0;
+    top: -40px;
+    transform-origin: bottom;
+    transform: skewX(45deg);/* skew用以倾斜，我尝试过用rotate 发现并没有什么卵用hh*/
+    transition: 0.5s;    
+}
+.td-column-li-a{
+    text-decoration: none;
+    color: gray;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+.td-column-li:hover a{
+    color:#fff;
+}
+
